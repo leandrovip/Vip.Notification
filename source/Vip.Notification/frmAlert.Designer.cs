@@ -95,6 +95,7 @@
             this.Opacity = 0.95D;
             this.ShowInTaskbar = false;
             this.Text = "frmAlert";
+            this.TopMost = true;
             this.Click += new System.EventHandler(this.CloseAlert_Click);
             ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbClose)).EndInit();

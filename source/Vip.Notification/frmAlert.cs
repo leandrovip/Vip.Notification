@@ -12,6 +12,7 @@ namespace Vip.Notification
         private AlertAction _action;
         private int positionX;
         private int positionY;
+        protected override bool ShowWithoutActivation => true;
 
         #endregion
 

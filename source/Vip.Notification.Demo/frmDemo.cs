@@ -26,6 +26,7 @@ namespace Vip.Notification.Demo
         private void btnSucess_Click(object sender, EventArgs e)
         {
             Alert.ShowSucess("Registro salvo com sucesso!");
+            
         }
 
         private void btnInformation_Click(object sender, EventArgs e)

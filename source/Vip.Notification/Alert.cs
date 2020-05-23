@@ -2,7 +2,7 @@
 
 namespace Vip.Notification
 {
-    public static class Alert
+    public class Alert
     {
         #region Static Methods
 
