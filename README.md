@@ -54,7 +54,7 @@ Alert.ShowError("My message error here");
 // Image - Image for logo
 // Color - Color for background 
 
-Alert.ShowSucess("My custom message here", Image, Color.Blue);
+Alert.ShowCustom("My custom message here", Image, Color.Blue);
 ```
 
 License - MIT
