@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Vip.Notification.Demo")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Alert notifications for desktop")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("VIP Soluções")]
 [assembly: AssemblyProduct("Vip.Notification.Demo")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
