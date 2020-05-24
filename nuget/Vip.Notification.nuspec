@@ -2,15 +2,18 @@
 <package >
   <metadata>
     <id>Vip.Notification</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>Leandro Ferreira</authors>
     <owners>Leandro Ferreira</owners>
     <projectUrl>https://github.com/leandrovip/Vip.Notification</projectUrl>
     <description>Toast alert notification for desktop</description>
     <copyright>Copyright 2020</copyright>
     <tags>vip toast alert notification form winforms</tags>
+    <dependencies>
+      <group targetFramework="net45" />
+    </dependencies>
   </metadata>
   <files>
-       <file src="..\source\Vip.Notification\bin\Release\Vip.Notification.dll" target="lib\net48\Vip.Notification.dll"/>
+       <file src="..\source\Vip.Notification\bin\Release\Vip.Notification.dll" target="lib\net45\Vip.Notification.dll"/>
   </files>
 </package>

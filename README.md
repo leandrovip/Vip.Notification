@@ -10,7 +10,7 @@
     <img alt="Nuget" src="https://img.shields.io/nuget/dt/Vip.Notification?label=NuGet%20downloads">
   </a>
   
-  <a href="https://www.nuget.org/packages/Vip.Printer/">
+  <a href="https://www.nuget.org/packages/Vip.Notification/">
      <img alt="NuGet" src="https://img.shields.io/nuget/v/Vip.Notification.svg">
   </a>
 </p>
@@ -22,7 +22,7 @@
 # Get Started
 
 ## Requisites
-- .NetFramework 4.8
+- .NetFramework 4.5+
 
 ## Step 0: Install via NuGet and declare using
 
