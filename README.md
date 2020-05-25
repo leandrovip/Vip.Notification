@@ -7,7 +7,7 @@
   </a>
   
   <a href="https://www.nuget.org/packages/Vip.Notification/">
-    <img alt="Nuget" src="https://img.shields.io/nuget/dt/Vip.Notification?label=NuGet%20downloads">
+    <img alt="Nuget" src="https://img.shields.io/nuget/dt/Vip.Notification?label=NuGet%20downloads&style=flat-square">
   </a>
   
   <a href="https://www.nuget.org/packages/Vip.Notification/">
