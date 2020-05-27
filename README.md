@@ -39,6 +39,9 @@ using Vip.Notification;
 // Sucess
 Alert.ShowSucess("My message sucess here");
 
+// Sucess with interval shown
+Alert.ShowSucess("My message sucess here", 2000);
+
 // Information
 Alert.ShowInformation("My message information here");
 
@@ -55,6 +58,9 @@ Alert.ShowError("My message error here");
 // Color - Color for background 
 
 Alert.ShowCustom("My custom message here", Image, Color.Blue);
+
+// Custom with interval shown
+Alert.ShowCustom("My custom message here", 2000, Image, Color.Blue);
 ```
 
 License - MIT

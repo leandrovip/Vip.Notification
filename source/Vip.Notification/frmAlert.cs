@@ -10,6 +10,7 @@ namespace Vip.Notification
         #region Properties
 
         private AlertAction _action;
+        private int _interval;
         private int positionX;
         private int positionY;
         protected override bool ShowWithoutActivation => true;
@@ -46,7 +47,7 @@ namespace Vip.Notification
 
                     break;
                 case AlertAction.Wait:
-                    timer.Interval = 5000;
+                    timer.Interval = _interval;
                     _action = AlertAction.Close;
                     break;
                 case AlertAction.Close:
@@ -62,7 +63,7 @@ namespace Vip.Notification
 
         #region Methods
 
-        internal void ShowAlert(string message, AlertType alertType, Image image = null, Color color = default)
+        internal void ShowAlert(string message, AlertType alertType, int interval, Image image = null, Color color = default)
         {
             Opacity = 0.0;
             StartPosition = FormStartPosition.Manual;
@@ -109,6 +110,7 @@ namespace Vip.Notification
             }
 
             lblMessage.Text = message;
+            _interval = interval;
             _action = AlertAction.Start;
             timer.Interval = 1;
             timer.Start();
