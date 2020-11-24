@@ -15,6 +15,15 @@ namespace Vip.Notification
         private int positionY;
         protected override bool ShowWithoutActivation => true;
 
+        /// <summary>
+        /// Override ParentForm to be Writeable
+        /// </summary>
+        public new Form ParentForm
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Constructor
@@ -66,6 +75,17 @@ namespace Vip.Notification
         internal void ShowAlert(string message, AlertType alertType, int interval, Image image = null, Color color = default)
         {
             Opacity = 0.0;
+
+            //WorkingArea on Primary Screen as Default
+            var screenWorkingArea = Screen.PrimaryScreen.WorkingArea;
+
+            //If parent is set, than get Screen of Parent
+            if ( ParentForm != null )
+            {
+                //Get Screen WorkingArea where ParentForm is located
+                screenWorkingArea = Screen.FromControl(ParentForm).WorkingArea;
+            }
+
             StartPosition = FormStartPosition.Manual;
 
             for (int i = 1; i < 10; i++)
@@ -76,14 +96,14 @@ namespace Vip.Notification
                 if (frm == null)
                 {
                     Name = formName;
-                    positionX = Screen.PrimaryScreen.WorkingArea.Width - Width + 15;
-                    positionY = Screen.PrimaryScreen.WorkingArea.Height - Height * i - 5 * i;
+                    positionX = screenWorkingArea.X + screenWorkingArea.Width - Width + 15;
+                    positionY = screenWorkingArea.Y + screenWorkingArea.Height - Height * i - 5 * i;
                     Location = new Point(positionX, positionY);
                     break;
                 }
             }
 
-            positionX = Screen.PrimaryScreen.WorkingArea.Width - Width - 5;
+            positionX = screenWorkingArea.X + screenWorkingArea.Width - Width - 5;
 
             switch (alertType)
             {
