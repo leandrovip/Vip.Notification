@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Vip.Notification
 {
@@ -10,16 +11,17 @@ namespace Vip.Notification
 
         #endregion
 
-        #region Sucess
+        #region Success
 
-        public static void ShowSuccess(string message)
+        public static void ShowSuccess(string message, Form parent = null)
         {
-            ShowSuccess(message, IntervalDefault);
+            ShowSuccess(message, IntervalDefault, parent);
         }
 
-        public static void ShowSuccess(string message, int interval)
+        public static void ShowSuccess(string message, int interval, Form parent = null)
         {
             var frm = new frmAlert();
+            frm.ParentForm = parent;
             frm.ShowAlert(message, AlertType.Sucess, interval);
         }
 
@@ -27,14 +29,15 @@ namespace Vip.Notification
 
         #region Information
 
-        public static void ShowInformation(string message)
+        public static void ShowInformation(string message, Form parent = null)
         {
-            ShowInformation(message, IntervalDefault);
+            ShowInformation(message, IntervalDefault, parent);
         }
 
-        public static void ShowInformation(string message, int interval)
+        public static void ShowInformation(string message, int interval, Form parent = null)
         {
             var frm = new frmAlert();
+            frm.ParentForm = parent;
             frm.ShowAlert(message, AlertType.Information, interval);
         }
 
@@ -42,14 +45,15 @@ namespace Vip.Notification
 
         #region Warning
 
-        public static void ShowWarning(string message)
+        public static void ShowWarning(string message, Form parent = null)
         {
-            ShowWarning(message, IntervalDefault);
+            ShowWarning(message, IntervalDefault, parent);
         }
 
-        public static void ShowWarning(string message, int interval)
+        public static void ShowWarning(string message, int interval, Form parent = null)
         {
             var frm = new frmAlert();
+            frm.ParentForm = parent;
             frm.ShowAlert(message, AlertType.Warning, interval);
         }
 
@@ -57,14 +61,15 @@ namespace Vip.Notification
 
         #region Error
 
-        public static void ShowError(string message)
+        public static void ShowError(string message, Form parent = null)
         {
-            ShowError(message, IntervalDefault);
+            ShowError(message, IntervalDefault, parent);
         }
 
-        public static void ShowError(string message, int interval)
+        public static void ShowError(string message, int interval, Form parent = null)
         {
             var frm = new frmAlert();
+            frm.ParentForm = parent;
             frm.ShowAlert(message, AlertType.Error, interval);
         }
 
@@ -72,14 +77,15 @@ namespace Vip.Notification
 
         #region Custom
 
-        public static void ShowCustom(string message, Image image = null, Color color = default)
+        public static void ShowCustom(string message, Image image = null, Color color = default, Form parent = null)
         {
-            ShowCustom(message, IntervalDefault, image, color);
+            ShowCustom(message, IntervalDefault, image, color, parent);
         }
 
-        public static void ShowCustom(string message, int interval, Image image = null, Color color = default)
+        public static void ShowCustom(string message, int interval, Image image = null, Color color = default, Form parent = null)
         {
             var frm = new frmAlert();
+            frm.ParentForm = parent;
             frm.ShowAlert(message, AlertType.Custom, interval, image, color == default ? Color.FromArgb(83, 92, 104) : color);
         }
 
