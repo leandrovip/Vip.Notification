@@ -12,12 +12,12 @@ namespace Vip.Notification
 
         #region Sucess
 
-        public static void ShowSucess(string message)
+        public static void ShowSuccess(string message)
         {
-            ShowSucess(message, IntervalDefault);
+            ShowSuccess(message, IntervalDefault);
         }
 
-        public static void ShowSucess(string message, int interval)
+        public static void ShowSuccess(string message, int interval)
         {
             var frm = new frmAlert();
             frm.ShowAlert(message, AlertType.Sucess, interval);
