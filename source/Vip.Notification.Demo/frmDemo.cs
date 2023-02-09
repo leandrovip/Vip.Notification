@@ -52,8 +52,12 @@ namespace Vip.Notification.Demo
         {
             if (sender == btnErrorAppScreen)
                 Alert.ShowError("Ops!! Algo não deu certo :(", this);
-            else
+            else if ( sender == btnErrorPrimary)
                 Alert.ShowError("Ops!! Algo não deu certo :(");
+            else if (sender == btnErrorAppScreenStayOpen)
+                Alert.ShowError("Ops!! Algo não deu certo :(", null, false);
+            else if (sender == btnErrorPrimaryStayOpen)
+                Alert.ShowError("Ops!! Algo não deu certo :(", this, false);
         }
 
         private void btnCustom_Click(object sender, EventArgs e)

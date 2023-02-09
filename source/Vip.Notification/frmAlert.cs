@@ -1,19 +1,48 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using Vip.Notification.Properties;
 
 namespace Vip.Notification
 {
     public partial class frmAlert : Form
     {
+        #region Windows API
+        private const int SW_SHOWNOACTIVATE = 4;
+        private const int HWND_TOPMOST = -1;
+        private const uint SWP_NOACTIVATE = 0x0010;
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
+        static extern bool SetWindowPos(
+            int hWnd,             // Window handle
+            int hWndInsertAfter,  // Placement-order handle
+            int X,                // Horizontal position
+            int Y,                // Vertical position
+            int cx,               // Width
+            int cy,               // Height
+            uint uFlags);         // Window positioning flags
+
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        static void ShowInactiveTopmost(Form frm)
+        {
+            ShowWindow(frm.Handle, SW_SHOWNOACTIVATE);
+            SetWindowPos(frm.Handle.ToInt32(), HWND_TOPMOST,
+            frm.Left, frm.Top, frm.Width, frm.Height,
+            SWP_NOACTIVATE);
+        }
+
+        #endregion
+
         #region Properties
 
         private AlertAction _action;
         private int _interval;
         private int positionX;
         private int positionY;
-        protected override bool ShowWithoutActivation => true;
+        private bool _autoClose = true; 
 
         /// <summary>
         /// Override ParentForm to be Writeable
@@ -22,6 +51,22 @@ namespace Vip.Notification
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Fenster anzeigen, ohne Focus zu klauen
+        /// </summary>
+        protected new bool ShowWithoutActivation
+        {
+            get => true;
+        }
+
+        /// <summary>
+        /// Aktuelle Meldung
+        /// </summary>
+        public string Message
+        {
+            get => lblMessage.Text;
         }
 
         #endregion
@@ -57,13 +102,18 @@ namespace Vip.Notification
                     break;
                 case AlertAction.Wait:
                     timer.Interval = _interval;
-                    _action = AlertAction.Close;
+
+                    if (_autoClose == true)
+                        _action = AlertAction.Close;
+
                     break;
                 case AlertAction.Close:
                     timer.Interval = 1;
                     Opacity -= 0.1;
                     Left -= 3;
-                    if (Opacity == 0.0) Close();
+
+                    if (Opacity == 0.0)
+                        Close();
                     break;
             }
         }
@@ -71,6 +121,12 @@ namespace Vip.Notification
         #endregion
 
         #region Methods
+
+        internal void ShowAlert(string message, AlertType alertType, int interval, bool autoClose, Image image = null, Color color = default)
+        {
+            _autoClose = autoClose;
+            ShowAlert(message, alertType, interval, image, color);
+        }
 
         internal void ShowAlert(string message, AlertType alertType, int interval, Image image = null, Color color = default)
         {
@@ -107,21 +163,21 @@ namespace Vip.Notification
 
             switch (alertType)
             {
-                case AlertType.Sucess:
+                case AlertType.Success:
                     ptbLogo.Image = Resources.sucess48px;
-                    BackColor = Color.SeaGreen;
+                    BackColor = Alert.Color_Sucess;
                     break;
                 case AlertType.Information:
                     ptbLogo.Image = Resources.information48px;
-                    BackColor = Color.RoyalBlue;
+                    BackColor = Alert.Color_Information;
                     break;
                 case AlertType.Warning:
                     ptbLogo.Image = Resources.warning48px;
-                    BackColor = Color.FromArgb(230, 126, 34);
+                    BackColor = Alert.Color_Warning;
                     break;
                 case AlertType.Error:
                     ptbLogo.Image = Resources.error48px;
-                    BackColor = Color.FromArgb(231, 76, 60);
+                    BackColor = Alert.Color_Error;
                     break;
                 case AlertType.Custom:
                     ptbLogo.Image = image ?? Resources.information48px;
@@ -139,5 +195,24 @@ namespace Vip.Notification
         }
 
         #endregion
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams baseParams = base.CreateParams;
+
+                const int WS_EX_NOACTIVATE = 0x08000000;
+                const int WS_EX_TOOLWINDOW = 0x00000080;
+                baseParams.ExStyle |= (int)(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW);
+
+                return baseParams;
+            }
+        }
+
+        private void frmAlert_Load(object sender, EventArgs e)
+        {
+            ShowInactiveTopmost(this);
+        }
     }
 }

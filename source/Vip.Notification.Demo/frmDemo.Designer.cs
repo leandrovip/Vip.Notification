@@ -42,6 +42,8 @@
             this.btnWarningAppScreen = new System.Windows.Forms.Button();
             this.btnInformationAppScreen = new System.Windows.Forms.Button();
             this.btnSuccessAppScreen = new System.Windows.Forms.Button();
+            this.btnErrorAppScreenStayOpen = new System.Windows.Forms.Button();
+            this.btnErrorPrimaryStayOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSuccessPrimary
@@ -117,7 +119,7 @@
             // linkProject
             // 
             this.linkProject.AutoSize = true;
-            this.linkProject.Location = new System.Drawing.Point(76, 302);
+            this.linkProject.Location = new System.Drawing.Point(73, 441);
             this.linkProject.Name = "linkProject";
             this.linkProject.Size = new System.Drawing.Size(84, 13);
             this.linkProject.TabIndex = 1;
@@ -128,7 +130,7 @@
             // lblCaption
             // 
             this.lblCaption.AutoSize = true;
-            this.lblCaption.Location = new System.Drawing.Point(12, 302);
+            this.lblCaption.Location = new System.Drawing.Point(9, 441);
             this.lblCaption.Name = "lblCaption";
             this.lblCaption.Size = new System.Drawing.Size(64, 13);
             this.lblCaption.TabIndex = 2;
@@ -222,11 +224,41 @@
             this.btnSuccessAppScreen.UseVisualStyleBackColor = false;
             this.btnSuccessAppScreen.Click += new System.EventHandler(this.btnSuccess_Click);
             // 
+            // btnErrorAppScreenStayOpen
+            // 
+            this.btnErrorAppScreenStayOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnErrorAppScreenStayOpen.FlatAppearance.BorderSize = 0;
+            this.btnErrorAppScreenStayOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnErrorAppScreenStayOpen.ForeColor = System.Drawing.Color.White;
+            this.btnErrorAppScreenStayOpen.Location = new System.Drawing.Point(284, 224);
+            this.btnErrorAppScreenStayOpen.Name = "btnErrorAppScreenStayOpen";
+            this.btnErrorAppScreenStayOpen.Size = new System.Drawing.Size(130, 46);
+            this.btnErrorAppScreenStayOpen.TabIndex = 10;
+            this.btnErrorAppScreenStayOpen.Text = "Error (stay open)";
+            this.btnErrorAppScreenStayOpen.UseVisualStyleBackColor = false;
+            this.btnErrorAppScreenStayOpen.Click += new System.EventHandler(this.btnError_Click);
+            // 
+            // btnErrorPrimaryStayOpen
+            // 
+            this.btnErrorPrimaryStayOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnErrorPrimaryStayOpen.FlatAppearance.BorderSize = 0;
+            this.btnErrorPrimaryStayOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnErrorPrimaryStayOpen.ForeColor = System.Drawing.Color.White;
+            this.btnErrorPrimaryStayOpen.Location = new System.Drawing.Point(284, 82);
+            this.btnErrorPrimaryStayOpen.Name = "btnErrorPrimaryStayOpen";
+            this.btnErrorPrimaryStayOpen.Size = new System.Drawing.Size(130, 46);
+            this.btnErrorPrimaryStayOpen.TabIndex = 11;
+            this.btnErrorPrimaryStayOpen.Text = "Error";
+            this.btnErrorPrimaryStayOpen.UseVisualStyleBackColor = false;
+            this.btnErrorPrimaryStayOpen.Click += new System.EventHandler(this.btnError_Click);
+            // 
             // frmDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 324);
+            this.ClientSize = new System.Drawing.Size(433, 463);
+            this.Controls.Add(this.btnErrorPrimaryStayOpen);
+            this.Controls.Add(this.btnErrorAppScreenStayOpen);
             this.Controls.Add(this.btnErrorAppScreen);
             this.Controls.Add(this.btnCustomAppScreen);
             this.Controls.Add(this.btnWarningAppScreen);
@@ -264,5 +296,7 @@
         private System.Windows.Forms.Button btnWarningAppScreen;
         private System.Windows.Forms.Button btnInformationAppScreen;
         private System.Windows.Forms.Button btnSuccessAppScreen;
+        private System.Windows.Forms.Button btnErrorAppScreenStayOpen;
+        private System.Windows.Forms.Button btnErrorPrimaryStayOpen;
     }
 }

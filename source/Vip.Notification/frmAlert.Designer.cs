@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlert));
             this.ptbLogo = new System.Windows.Forms.PictureBox();
             this.lblMessage = new System.Windows.Forms.Label();
             this.ptbClose = new System.Windows.Forms.PictureBox();
@@ -91,11 +92,13 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAlert";
             this.Opacity = 0.95D;
             this.ShowInTaskbar = false;
             this.Text = "frmAlert";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmAlert_Load);
             this.Click += new System.EventHandler(this.CloseAlert_Click);
             ((System.ComponentModel.ISupportInitialize)(this.ptbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbClose)).EndInit();
