@@ -62,28 +62,35 @@ namespace Vip.Notification
         #endregion
 
         #region Methods
-
+        [Obsolete("Use ShowAlert with sender instead")]
         internal void ShowAlert(string message, AlertType alertType, int interval, Image image = null, Color color = default)
         {
-            Opacity = 0.0;
+            ShowAlert(null, message, alertType, interval, image, color);
+        }
+
+        internal void ShowAlert(object sender, string message, AlertType alertType, int interval, Image image = null, Color color = default)
+        {
+            var screen = Screen.PrimaryScreen;
+            Control control = sender as Control;
+            if (control != null)
+                screen = Screen.FromControl(control);
             StartPosition = FormStartPosition.Manual;
+            Opacity = 0.0;
 
             for (int i = 1; i < 10; i++)
             {
                 var formName = "alert" + i;
-                var frm = (frmAlert) Application.OpenForms[formName];
+                var frm = (frmAlert)Application.OpenForms[formName];
 
                 if (frm == null)
                 {
                     Name = formName;
-                    positionX = Screen.PrimaryScreen.WorkingArea.Width - Width + 15;
-                    positionY = Screen.PrimaryScreen.WorkingArea.Height - Height * i - 5 * i;
+                    positionX = screen.WorkingArea.Location.X + screen.WorkingArea.Width - Width;
+                    positionY = screen.WorkingArea.Location.Y + screen.WorkingArea.Height - Height * i - 5 * i;
                     Location = new Point(positionX, positionY);
                     break;
                 }
             }
-
-            positionX = Screen.PrimaryScreen.WorkingArea.Width - Width - 5;
 
             switch (alertType)
             {

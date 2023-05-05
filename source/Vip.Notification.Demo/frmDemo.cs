@@ -25,28 +25,28 @@ namespace Vip.Notification.Demo
 
         private void btnSucess_Click(object sender, EventArgs e)
         {
-            Alert.ShowSucess("Registro salvo com sucesso!");
+            Alert.ShowSucess(this, "Registro salvo com sucesso!");
             
         }
 
         private void btnInformation_Click(object sender, EventArgs e)
         {
-            Alert.ShowInformation("Nova atualização disponível!");
+            Alert.ShowInformation(this, "Nova atualização disponível!");
         }
 
         private void btnWarning_Click(object sender, EventArgs e)
         {
-            Alert.ShowWarning("Alerta!! Verifique suas permissões");
+            Alert.ShowWarning(this, "Alerta!! Verifique suas permissões");
         }
 
         private void btnError_Click(object sender, EventArgs e)
         {
-            Alert.ShowError("Ops!! Algo não deu certo :(");
+            Alert.ShowError(this, "Ops!! Algo não deu certo :(");
         }
 
         private void btnCustom_Click(object sender, EventArgs e)
         {
-            Alert.ShowCustom("Olá!! Notificação customizada.", color: Color.FromArgb(179, 55, 113));
+            Alert.ShowCustom(this, "Olá!! Notificação customizada.", color: Color.FromArgb(179, 55, 113));
         }
 
         #endregion
